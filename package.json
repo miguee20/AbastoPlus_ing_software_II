@@ -1,0 +1,24 @@
+{
+  "name": "abastoplus_ing_software_ii",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miguee20/AbastoPlus_ing_software_II.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/miguee20/AbastoPlus_ing_software_II/issues"
+  },
+  "homepage": "https://github.com/miguee20/AbastoPlus_ing_software_II#readme",
+  "dependencies": {
+    "typescript": "^5.9.3"
+  }
+}
