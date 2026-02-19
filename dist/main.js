@@ -1,17 +1,9 @@
 import { Product } from "./catalog/product/domain/product.js";
-
 const runTests = () => {
     try {
         console.log("PRUEBA 1: Creando un producto válido...");
-        
-        
         const validProductId = "550e8400-e29b-41d4-a716-446655440000";
-        
-        const miProducto = Product.build(
-            validProductId, 
-            "Café de Altura Quetzaltenango", 
-            "lb"
-        );
+        const miProducto = Product.build(validProductId, "Café de Altura Quetzaltenango", "lb");
         console.log("Producto creado exitosamente en memoria.");
         const rawPresentations = [
             {
@@ -31,28 +23,20 @@ const runTests = () => {
         ];
         console.log("Cargando presentaciones crudas al producto...");
         miProducto.loadPresentations(rawPresentations);
-        
- 
         console.log("Presentaciones validadas y cargadas con éxito\n");
-        console.log(miProducto); 
+        console.log(miProducto);
         console.log("❌ PRUEBA 2: Intentando romper las reglas del negocio...");
-        
         // Intento 1: Nombre muy corto (debe fallar la regla de > 10 caracteres)
-        const productoMalo = Product.build(
-            "999e8400-e29b-41d4-a716-446655449999", 
-            "Pan", 
-            "Unidad"
-        );
-
+        const productoMalo = Product.build("999e8400-e29b-41d4-a716-446655449999", "Pan", "Unidad");
         // Si llega a esta línea, la validación falló
         console.log("   -> ⚠️ ERROR: El sistema permitió crear un producto inválido.");
-
-    } catch (error: any) {
+    }
+    catch (error) {
         // Aquí capturamos los errores de nuestros Value Objects
         console.log("   -> ¡Excelente! El dominio protegió la aplicación.");
         console.log(`   -> Mensaje de error capturado: "${error.message}"`);
     }
 };
-
 // Ejecutamos la prueba
 runTests();
+//# sourceMappingURL=main.js.map

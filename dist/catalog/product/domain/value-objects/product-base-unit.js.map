@@ -1,0 +1,1 @@
+{"version":3,"file":"product-base-unit.js","sourceRoot":"","sources":["../../../../../src/catalog/product/domain/value-objects/product-base-unit.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,eAAe,EAAE,MAAM,8DAA8D,CAAC;AAE/F,MAAM,OAAO,eAAgB,SAAQ,eAAuB;IACxD,YAAY,KAAa;QACrB,KAAK,CAAC,KAAK,EAAE,CAAC,IAAI,EAAC,GAAG,EAAE,IAAI,EAAE,IAAI,EAAE,IAAI,EAAE,QAAQ,CAAC,CAAC,CAAC;IACzD,CAAC;CACJ"}

@@ -1,0 +1,1 @@
+{"version":3,"file":"product-base-unit.d.ts","sourceRoot":"","sources":["../../../../../src/catalog/product/domain/value-objects/product-base-unit.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,eAAe,EAAE,MAAM,8DAA8D,CAAC;AAE/F,qBAAa,eAAgB,SAAQ,eAAe,CAAC,MAAM,CAAC;gBAC5C,KAAK,EAAE,MAAM;CAG5B"}
