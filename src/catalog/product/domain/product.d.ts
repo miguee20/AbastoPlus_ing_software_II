@@ -13,4 +13,3 @@ export declare class Product {
         UnitOfMeasure: string;
     }>): void;
 }
-//# sourceMappingURL=product.d.ts.map

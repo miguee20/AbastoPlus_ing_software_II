@@ -1,4 +1,3 @@
-// src/catalog/product/domain/value-objects/Product-presentations.ts
 import { Presentation } from "../entities/presentation.js";
 
 export class ProductPresentations {
