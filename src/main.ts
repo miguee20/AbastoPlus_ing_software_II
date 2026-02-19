@@ -35,24 +35,24 @@ const runTests = () => {
  
         console.log("Presentaciones validadas y cargadas con éxito\n");
         console.log(miProducto); 
-        console.log("❌ PRUEBA 2: Intentando romper las reglas del negocio...");
+        console.log("PRUEBA 2: Intentando romper las reglas del negocio...");
         
-        // Intento 1: Nombre muy corto (debe fallar la regla de > 10 caracteres)
+    
         const productoMalo = Product.build(
             "999e8400-e29b-41d4-a716-446655449999", 
             "Pan", 
             "Unidad"
         );
 
-        // Si llega a esta línea, la validación falló
-        console.log("   -> ⚠️ ERROR: El sistema permitió crear un producto inválido.");
+ 
+        console.log(" ERROR: El sistema permitió crear un producto inválido.");
 
     } catch (error: any) {
-        // Aquí capturamos los errores de nuestros Value Objects
-        console.log("   -> ¡Excelente! El dominio protegió la aplicación.");
-        console.log(`   -> Mensaje de error capturado: "${error.message}"`);
+
+        console.log("El dominio protegió la aplicación.");
+        console.log(`Mensaje de error capturado: "${error.message}"`);
     }
 };
 
-// Ejecutamos la prueba
+
 runTests();
