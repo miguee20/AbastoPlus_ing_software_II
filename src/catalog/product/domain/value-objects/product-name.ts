@@ -7,7 +7,7 @@ export class ProductName extends StringValueObject {
     }
 
     private ensureNameIsLongEnough(value: string): void {
-        if (value.length > 10) {
+        if (value.length <= 10) {
             throw new Error("El nombre del producto debe tener más de 10 caracteres");
         }
     }
