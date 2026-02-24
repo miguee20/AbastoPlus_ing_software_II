@@ -1,15 +1,13 @@
 import { ValueObject } from "./ValueObject.js";
-
-export abstract class EnumValueObject<T> extends ValueObject<T> {
-    
-    constructor(value: T, validValues: T[]) {
+export class EnumValueObject extends ValueObject {
+    constructor(value, validValues) {
         super(value);
         this.ensureValueIsValid(value, validValues);
     }
-
-    private ensureValueIsValid(value: T, validValues: T[]): void {
+    ensureValueIsValid(value, validValues) {
         if (!validValues.includes(value)) {
             throw new Error(`El valor ${value} no es una opción válida`);
         }
     }
 }
+//# sourceMappingURL=enum-value-object.js.map

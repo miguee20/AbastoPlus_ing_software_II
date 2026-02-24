@@ -19,5 +19,15 @@ export class Presentation {
     static build(id, name, type, netQuantity, unitOfMeasure) {
         return new Presentation(new PresentationId(id), new PresentationName(name), new PresentationType(type), new PresentationNetQuantity(netQuantity), new PresentationUnitOfMeasure(unitOfMeasure));
     }
+    toPrimitives() {
+        return {
+            id: this.id.toString(),
+            name: this.name.toString(),
+            type: this.type.toString(),
+            // Usamos Number() para asegurar que la cantidad se guarde como número en Mongo y no como texto
+            netQuantity: Number(this.netQuantity.toString()),
+            unitOfMeasure: this.unitOfMeasure.toString()
+        };
+    }
 }
 //# sourceMappingURL=presentation.js.map

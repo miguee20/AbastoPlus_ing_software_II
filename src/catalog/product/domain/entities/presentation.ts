@@ -40,4 +40,14 @@ export class Presentation {
             new PresentationUnitOfMeasure(unitOfMeasure)
         );
     }
+    public toPrimitives() {
+        return {
+            id: this.id.toString(),
+            name: this.name.toString(),
+            type: this.type.toString(),
+            // Usamos Number() para asegurar que la cantidad se guarde como número en Mongo y no como texto
+            netQuantity: Number(this.netQuantity.toString()), 
+            unitOfMeasure: this.unitOfMeasure.toString()
+        };
+    }
 }

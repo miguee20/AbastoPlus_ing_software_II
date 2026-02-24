@@ -24,5 +24,13 @@ export class Product {
         const newPresentations = ProductPresentations.createFromArray(rawPresentations);
         this.productPresentations.items.push(...newPresentations.items);
     }
+    toPrimitives() {
+        return {
+            id: this.productId.toString(),
+            name: this.productName.toString(),
+            baseUnit: this.productBaseUnit.toString(),
+            presentations: this.productPresentations.items.map(p => p.toPrimitives())
+        };
+    }
 }
 //# sourceMappingURL=product.js.map

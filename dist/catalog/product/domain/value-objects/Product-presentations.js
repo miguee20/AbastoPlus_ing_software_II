@@ -12,3 +12,4 @@ export class ProductPresentations {
         return this.values;
     }
 }
+//# sourceMappingURL=product-presentations.js.map

@@ -1,58 +1,39 @@
+import mongoose from "mongoose";
 import { Product } from "./catalog/product/domain/product.js";
+import { MongoProductRepository } from "./catalog/product/infrastructure/MongoProductRepository.js";
 
-const runTests = () => {
+const MONGO_URI = "mongodb://127.0.0.1:27017/abasto_plus";
+
+const runTests = async (): Promise<void> => {
     try {
-        console.log("PRUEBA 1: Creando un producto válido...");
-        
-        
-        const validProductId = "550e8400-e29b-41d4-a716-446655440000";
-        
-        const miProducto = Product.build(
-            validProductId, 
-            "Café de Altura Quetzaltenango", 
-            "lb"
-        );
-        console.log("Producto creado exitosamente en memoria.");
+        console.log("Conectando a MongoDB...");
+        await mongoose.connect(MONGO_URI);
+        console.log("Conectado a la base de datos");
+
+        console.log("\n--- INICIANDO PRUEBA DE DOMINIO E INFRAESTRUCTURA ---");
+        const validProductId: string = "550e8400-e29b-41d4-a716-446655440000";
+        const miProducto = Product.build(validProductId, "Café de Altura Quetzaltenango", "lb");
         const rawPresentations = [
             {
                 id: "123e4567-e89b-12d3-a456-426614174001",
                 name: "Bolsa Pequeña de 1 Libra",
-                type: "bag",
+                type: "bag", 
                 netQuantity: 1,
-                UnitOfMeasure: "lb"
-            },
-            {
-                id: "123e4567-e89b-12d3-a456-426614174002",
-                name: "Saco Mayorista 50 Libras",
-                type: "sack",
-                netQuantity: 50,
                 UnitOfMeasure: "lb"
             }
         ];
-        console.log("Cargando presentaciones crudas al producto...");
         miProducto.loadPresentations(rawPresentations);
-        
- 
-        console.log("Presentaciones validadas y cargadas con éxito\n");
-        console.log(miProducto); 
-        console.log("PRUEBA 2: Intentando romper las reglas del negocio...");
-        
-    
-        const productoMalo = Product.build(
-            "999e8400-e29b-41d4-a716-446655449999", 
-            "Pan", 
-            "Unidad"
-        );
-
- 
-        console.log(" ERROR: El sistema permitió crear un producto inválido.");
+        console.log("Entidad de dominio construida y validada.");
+        const repository = new MongoProductRepository();
+        await repository.save(miProducto);
 
     } catch (error: any) {
-
-        console.log("El dominio protegió la aplicación.");
-        console.log(`Mensaje de error capturado: "${error.message}"`);
+        console.log("\n Error capturado:");
+        console.log(error.message);
+    } finally {
+        await mongoose.connection.close();
+        console.log("🔌 Conexión cerrada.");
     }
 };
-
 
 runTests();

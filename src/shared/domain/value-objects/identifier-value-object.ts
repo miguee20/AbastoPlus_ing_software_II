@@ -1,5 +1,4 @@
 import { ValueObject } from "./ValueObject.js";
-
 export abstract class IdentifierValueObject extends ValueObject<string> {
   constructor(value: string) {
     super(value);

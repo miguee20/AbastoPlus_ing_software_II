@@ -1,1 +1,0 @@
-{"version":3,"file":"product-name.d.ts","sourceRoot":"","sources":["../../../../../src/catalog/product/domain/value-objects/product-name.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,iBAAiB,EAAE,MAAM,gEAAgE,CAAC;AAEnG,qBAAa,WAAY,SAAQ,iBAAiB;gBAClC,KAAK,EAAE,MAAM;IAKzB,OAAO,CAAC,sBAAsB;CAKjC"}

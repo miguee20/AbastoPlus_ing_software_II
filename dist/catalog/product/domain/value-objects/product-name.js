@@ -10,3 +10,4 @@ export class ProductName extends StringValueObject {
         }
     }
 }
+//# sourceMappingURL=product-name.js.map

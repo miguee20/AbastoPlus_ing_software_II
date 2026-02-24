@@ -1,1 +1,0 @@
-{"version":3,"file":"identifier-value-object.d.ts","sourceRoot":"","sources":["../../../../src/shared/domain/value-objects/identifier-value-object.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,WAAW,EAAE,MAAM,kBAAkB,CAAC;AAE/C,8BAAsB,qBAAsB,SAAQ,WAAW,CAAC,MAAM,CAAC;gBACzD,KAAK,EAAE,MAAM;IAKzB,OAAO,CAAC,iBAAiB;CAM1B"}

@@ -12,4 +12,11 @@ export declare class Product {
         netQuantity: number;
         UnitOfMeasure: string;
     }>): void;
+    toPrimitives(): {
+        id: any;
+        name: any;
+        baseUnit: any;
+        presentations: any[];
+    };
 }
+//# sourceMappingURL=product.d.ts.map
