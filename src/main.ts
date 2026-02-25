@@ -11,12 +11,12 @@ const runTests = async (): Promise<void> => {
         console.log("Conectado a la base de datos");
 
         console.log("\n--- INICIANDO PRUEBA DE DOMINIO E INFRAESTRUCTURA ---");
-        const validProductId: string = "550e8400-e29b-41d4-a716-446655440000";
-        const miProducto = Product.build(validProductId, "Café de Altura Quetzaltenango", "lb");
+        const validProductId: string = "550e8400-e29b-41d4-a116-446655440000";
+        const miProducto = Product.build(validProductId, "Café de Altura Huehuetenango", "lb");
         const rawPresentations = [
             {
                 id: "123e4567-e89b-12d3-a456-426614174001",
-                name: "Bolsa Pequeña de 1 Libra",
+                name: "Bolsa Pequeña de 5 Libras",
                 type: "bag", 
                 netQuantity: 1,
                 UnitOfMeasure: "lb"
