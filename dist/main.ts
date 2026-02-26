@@ -1,43 +1,41 @@
-import { Product } from "./catalog/product/domain/product.js";
+import mongoose from "mongoose";
+import { MongoProductRepository } from "./catalog/product/infrastructure/MongoProductRepository.js";
+import { SaveProduct } from "./catalog/product/application/use-cases/save-product.js";
 
-const runTests = (): void => {
+const MONGO_URI = "mongodb://127.0.0.1:27017/abasto_plus";
+
+const runTests = async (): Promise<void> => {
     try {
-        console.log("PRUEBA 1: Creando un producto válido...");
-        const validProductId: string = "550e8400-e29b-41d4-a716-446655440000";
+        console.log("Conectando a MongoDB...");
+        await mongoose.connect(MONGO_URI);
+        console.log("Conectado a la base de datos");
+
+        console.log("\n--- INICIANDO PRUEBA CON CASO DE USO ---");
+        const repository = new MongoProductRepository();
+        const saveProduct = new SaveProduct(repository);
+
         
-        const miProducto = Product.build(validProductId, "Café de Altura Quetzaltenango", "lb");
-        console.log("Producto creado exitosamente en memoria.");
-        const rawPresentations = [
-            {
-                id: "123e4567-e89b-12d3-a456-426614174001",
-                name: "Bolsa Pequeña de 1 Libra",
-                type: "Bolsa", 
-                netQuantity: 1,
-                UnitOfMeasure: "lb"
-            },
-            {
-                id: "123e4567-e89b-12d3-a456-426614174002",
-                name: "Saco Mayorista 50 Libras",
-                type: "Saco",
-                netQuantity: 50,
-                UnitOfMeasure: "lb"
-            }
-        ];
-        
-        console.log("Cargando presentaciones crudas al producto...");
-        miProducto.loadPresentations(rawPresentations);
-        
-        console.log("Presentaciones validadas y cargadas con éxito\n");
-        console.log(miProducto);
-        
-        console.log("PRUEBA 2: Intentando romper las reglas del negocio...");
-        const productoMalo = Product.build("999e8400-e29b-41d4-a716-446655449999", "Pan", "Unidad");
-        
-        console.log(" ERROR: El sistema permitió crear un producto inválido.");
-        
-    } catch (error: any) { 
-        console.log("El dominio protegió la aplicación.");
-        console.log(`Mensaje de error capturado: "${error.message}"`);
+        await saveProduct.execute({
+            id: "550e8401-e29b-41d4-a116-446655440000",
+            name: "Atol de masa Xela",
+            baseUnit: "lt",
+            presentations: [
+                {
+                    id: "123e4267-e89b-12d3-a456-426614174001",
+                    name: "Jarra Pequeña de 1 litro",
+                    type: "jar", 
+                    netQuantity: 1,
+                    UnitOfMeasure: "lt"
+                }
+            ]
+        });
+
+    } catch (error: any) {
+        console.log("\nError capturado por el dominio:");
+        console.log(error.message);
+    } finally {
+        await mongoose.connection.close();
+        console.log("Conexión cerrada.");
     }
 };
 
