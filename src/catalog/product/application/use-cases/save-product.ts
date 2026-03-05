@@ -1,4 +1,6 @@
 import { Product } from "../../domain/product.js";
+import { Translator } from "../../infrastructure/crowelin-translator.js";
+import type { TranslatorService } from "../ports/TranslatorService.js";
 import type { ProductRepository } from "../product-repository.js";
 
 
@@ -35,4 +37,6 @@ export class SaveProduct {
 
         await this.repository.save(product);
     }
+
+ 
 }
