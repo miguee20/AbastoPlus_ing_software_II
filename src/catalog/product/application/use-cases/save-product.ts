@@ -1,6 +1,7 @@
+import { injectable, inject } from "inversify";
 import { Product } from "../../domain/product.js";
 import type { ProductRepository } from "../product-repository.js";
-
+import { TYPES } from "../../../../di/types.js";
 
 export interface ProductPrimitives {
     id: string;
@@ -14,11 +15,13 @@ export interface ProductPrimitives {
         UnitOfMeasure: string;
     }>;
 }
-
+@injectable()
 export class SaveProduct {
     private readonly repository: ProductRepository;
 
-    constructor(repository: ProductRepository) {
+    constructor(
+        @inject(TYPES.ProductRepository) repository: ProductRepository
+    ) {
         this.repository = repository;
     }
     public async execute(data: ProductPrimitives): Promise<void> {

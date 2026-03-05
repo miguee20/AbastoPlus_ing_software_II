@@ -1,5 +1,8 @@
+import "reflect-metadata"; 
 import mongoose from "mongoose";
-import { MongoProductRepository } from "./catalog/product/infrastructure/MongoProductRepository.js";
+
+import { container } from "./di/inversify.config.js";
+import { TYPES } from "./di/types.js";
 import { SaveProduct } from "./catalog/product/application/use-cases/save-product.js";
 
 const MONGO_URI = "mongodb://127.0.0.1:27017/abasto_plus";
@@ -11,20 +14,20 @@ const runTests = async (): Promise<void> => {
         console.log("Conectado a la base de datos");
 
         console.log("\n--- INICIANDO PRUEBA CON CASO DE USO ---");
-        const repository = new MongoProductRepository();
-        const saveProduct = new SaveProduct(repository);
-
         
+
+        const saveProduct = container.get<SaveProduct>(TYPES.SaveProduct);
+
         await saveProduct.execute({
-            id: "550e8401-e29b-41d4-a116-446655440000",
-            name: "Atol de masa Xela",
+            id: "550e8401-e29b-41d8-a116-446625440000",
+            name: "Atole de elote Xela",
             baseUnit: "lt",
             presentations: [
                 {
-                    id: "123e4267-e89b-12d3-a456-426614174001",
-                    name: "Jarra Pequeña de 1 litro",
+                    id: "123e4247-e89b-12d3-a456-426614174001",
+                    name: "Jarra Pequeña de 5 litros",
                     type: "jar", 
-                    netQuantity: 1,
+                    netQuantity: 5,
                     UnitOfMeasure: "lt"
                 }
             ]

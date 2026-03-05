@@ -1,7 +1,8 @@
+import { injectable } from "inversify";
 import type { ProductRepository } from "../application/product-repository.js";
 import { Product } from "../domain/product.js";
 import { ProductModel } from "./MongoProductModel.js";
-
+@injectable()
 export class MongoProductRepository implements ProductRepository {
     
     public async save(product: Product): Promise<void> {
