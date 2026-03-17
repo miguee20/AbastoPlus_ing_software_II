@@ -1,5 +1,4 @@
 import { Product } from "../../domain/product.js";
-import { Translator } from "../../infrastructure/crowelin-translator.js";
 import type { TranslatorService } from "../ports/TranslatorService.js";
 import type { ProductRepository } from "../product-repository.js";
 
@@ -19,9 +18,12 @@ export interface ProductPrimitives {
 
 export class SaveProduct {
     private readonly repository: ProductRepository;
+    private readonly translator: TranslatorService;
 
-    constructor(repository: ProductRepository) {
+
+    constructor(repository: ProductRepository, transalator: TranslatorService) {
         this.repository = repository;
+        this.translator = transalator;
     }
     public async execute(data: ProductPrimitives): Promise<void> {
         
