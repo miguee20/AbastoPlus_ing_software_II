@@ -1,0 +1,1 @@
+{"version":3,"file":"DomainEvent.js","sourceRoot":"","sources":["../../../../src/shared/domain/events/DomainEvent.ts"],"names":[],"mappings":"AAAA,MAAM,OAAgB,WAAW;IACb,SAAS,CAAS;IAClB,UAAU,CAAO;IACjB,OAAO,CAA0B;IAEjD,YAAY,SAAiB,EAAE,OAAgC;QAC3D,IAAI,CAAC,SAAS,GAAG,SAAS,CAAC;QAC3B,IAAI,CAAC,UAAU,GAAG,IAAI,IAAI,EAAE,CAAC;QAC7B,IAAI,CAAC,OAAO,GAAG,OAAO,CAAC;IAC3B,CAAC;CACJ"}
