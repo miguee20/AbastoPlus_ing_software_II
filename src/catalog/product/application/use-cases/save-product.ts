@@ -1,6 +1,5 @@
 import { Product } from "../../domain/product.js";
 import { ProductCreatedEvent } from "../../domain/events/ProductCreatedEvent.js";
-import type { TranslatorService } from "../ports/TranslatorService.js";
 import type { ProductRepository } from "../product-repository.js";
 import type { EventBus } from "../../../../shared/domain/ports/EventBus.js";
 
@@ -19,16 +18,13 @@ export interface ProductPrimitives {
 
 export class SaveProduct {
     private readonly repository: ProductRepository;
-    private readonly translator: TranslatorService;
     private readonly eventBus: EventBus;
 
     constructor(
         repository: ProductRepository,
-        translator: TranslatorService,
         eventBus: EventBus
     ) {
         this.repository = repository;
-        this.translator = translator;
         this.eventBus = eventBus;
     }
 

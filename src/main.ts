@@ -7,8 +7,10 @@ import { NotifyBoss } from "./catalog/product/application/subscribers/NotifyBoss
 import { SendSmsToCustomers } from "./catalog/product/application/subscribers/SendSmsToCustomers.js";
 import { SendNotification } from "./catalog/product/application/subscribers/SendNotification.js";
 import { ProductCreatedEvent } from "./catalog/product/domain/events/ProductCreatedEvent.js";
+import { Translate } from "./catalog/product/application/subscribers/Translate.js";
 
 const MONGO_URI = "mongodb://127.0.0.1:27017/abasto_plus";
+const translator = new MyMemoryTranslator();
 
 const runTests = async (): Promise<void> => {
     try {
@@ -18,7 +20,6 @@ const runTests = async (): Promise<void> => {
 
         // --- Infraestructura ---
         const repository = new MongoProductRepository();
-        const translator = new MyMemoryTranslator();
         const eventBus = new InMemoryEventBus();
 
         // --- Registrar suscriptores al EventBus ---
@@ -27,9 +28,11 @@ const runTests = async (): Promise<void> => {
         eventBus.subscribe(ProductCreatedEvent.EVENT_NAME, new NotifyBoss());
         eventBus.subscribe(ProductCreatedEvent.EVENT_NAME, new SendSmsToCustomers());
         eventBus.subscribe(ProductCreatedEvent.EVENT_NAME, new SendNotification());
+        eventBus.subscribe(ProductCreatedEvent.EVENT_NAME, new Translate("Atol de masa Xela",translator));
+
 
         // --- Caso de uso ---
-        const saveProduct = new SaveProduct(repository, translator, eventBus);
+        const saveProduct = new SaveProduct(repository, eventBus);
 
         console.log("\n--- INICIANDO PRUEBA CON CASO DE USO + EVENT BUS ---");
 
