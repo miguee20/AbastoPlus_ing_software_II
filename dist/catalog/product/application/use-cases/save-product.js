@@ -15,8 +15,15 @@ import { Product } from "../../domain/product.js";
 import { TYPES } from "../../../../di/types.js";
 let SaveProduct = class SaveProduct {
     repository;
+<<<<<<< Updated upstream
     constructor(repository) {
         this.repository = repository;
+=======
+    eventBus;
+    constructor(repository, eventBus) {
+        this.repository = repository;
+        this.eventBus = eventBus;
+>>>>>>> Stashed changes
     }
     async execute(data) {
         const product = Product.build(data.id, data.name, data.baseUnit);
